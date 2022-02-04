@@ -1,0 +1,48 @@
+<app-titre
+  titre="Gestion des Documents"
+  vignette="Formulaire Modification"
+></app-titre>
+
+<section class="row">
+  <section class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group mb-3">
+          <label>Nom</label>
+          <input type="text" class="form-control" [(ngModel)]="form.nom" />
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Description</label>
+          <textarea
+            class="form-control"
+            [(ngModel)]="form.description"
+          ></textarea>
+        </div>
+
+        <hr />
+
+        <a class="btn btn-outline-secondary" [routerLink]="['/document/'+test2]">
+          Retour
+        </a>
+        <span class="float-end">
+          <button class="btn btn-warning" (click)="update(test2,test)">Enregistrer</button
+          >&nbsp;
+          <button (click)="reset()" class="btn btn-secondary">Annuler</button>
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group mb-3">
+          <h3>Preview dynamique du document :</h3>
+          <br>
+          <div [innerHTML]="converter"></div>
+            
+        </div>
+        </div>
+        </div>
+      </section>     
+</section>

@@ -1,0 +1,61 @@
+<app-titre titre="Gestion des Documents de {{ titres.nom }} "  vignette="Doc"></app-titre>
+<div class="input-group mb-3">
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Exemple de document"
+    [(ngModel)]="search"
+  />
+
+</div>
+<a class="btn btn-primary" [routerLink]="['/document/add/'+ test] ">
+  + Créer un document
+</a>
+<a class="btn btn-outline-secondary m-2" [routerLink]="['/carnet']">
+  Retour
+</a>
+
+
+
+<table class="table-striped table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>id</th>
+      <th>Modifier document</th>
+      <th>Afficher</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elem of (liste ); let i = index"> <!--| searchFilter: search-->
+      <td>{{ i + 1 }}</td>
+      <td>{{ elem.nom }}</td>
+      <td>{{ elem.id }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm"
+          [routerLink]="['/document/update/'+test +'/' + elem.id]"
+        >
+          Modifier
+        </button>
+      </td>
+      <td>
+        <button
+          class="btn btn-info btn-sm"
+          [routerLink]="['/document/view/'+test +'/' + elem.id]"
+        >
+          Afficher
+        </button>
+      </td>
+     
+     
+      <td>
+        <button (click)="delete(elem.id,test)" class="btn btn-danger btn-sm">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

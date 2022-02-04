@@ -1,0 +1,62 @@
+<app-titre titre="Gestion des Carnets" vignette="Carnet"></app-titre>
+
+<div class="input-group mb-3">
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Exemple de carnet"
+      [(ngModel)]="search"
+    />
+
+</div>
+
+<a class="btn btn-primary" [routerLink]="['/carnet/add']">
+  + Créer un carnet
+</a>
+<a class="btn btn-outline-secondary m-2" [routerLink]="['/']">
+  Retour
+</a>
+<br><br>
+
+
+
+<table class="table-striped table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nom</th>
+      <th>Modifier carnet</th>
+      <th>Acceder aux documents du carnet</th>
+     
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elem of (liste | searchFilter: search) ; let i = index" >  <!-- -->
+      <td>{{ i + 1 }}</td> 
+      <td>{{ elem.nom }}</td>
+      <td>
+        <button
+          class="btn btn-warning btn-sm"
+          [routerLink]="['/carnet/update/' + elem.id]" 
+        >
+          Modifier
+        </button>
+      </td>
+      <th>
+        <button class="btn btn-success btn-sm"
+          [routerLink]="['/document/'+elem.id]"
+          >
+          Acces aux documents
+        </button>
+
+      </th>
+      
+      <td>
+        <button (click)= "delete(elem.id)" class="btn btn-danger btn-sm">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
